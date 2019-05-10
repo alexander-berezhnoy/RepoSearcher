@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  background-color: #24292e;
+  color: hsla(0, 0%, 100%, 0.7);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 16px;
+  z-index: 32;
+}
+.navbar-brand {
+  background-color: #24292e;
+  color: #eaeaea;
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+.fa-github {
+  margin: 10px;
+}
