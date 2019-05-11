@@ -182,3 +182,66 @@ const filterByStars = () => {
 };
 
 starFilter.addEventListener("change", filterByStars, false);
+
+/* Repo name sort */
+const repoNames = document.getElementsByClassName("repo-name");
+const nameOrder = document.getElementById("name-order");
+const nameSortBtn = document.getElementById("name-sort");
+
+const render = nodes => {
+  clearRepos();
+  let wrapper = document.createElement("div");
+  wrapper.className = "wrapper";
+  document.body.insertBefore(wrapper, document.body.nextSibling);
+  for (let j = 0; j < nodes.length; j++) {
+    wrapper.appendChild(nodes[j]);
+  }
+};
+
+const sortByName = () => {
+  let sortedCards = [];
+  for (let i = 0; i < cards.length; i++) {
+    sortedCards.push(cards[i]);
+  }
+  if (nameSortBtn.className.includes("asc")) {
+    //ascending sort
+    sortedCards.sort((a, b) => {
+      const nameA = a
+        .getElementsByClassName("repo-name")[0]
+        .innerText.toLowerCase();
+      const nameB = b
+        .getElementsByClassName("repo-name")[0]
+        .innerText.toLowerCase();
+      let result = 0;
+      if (nameA < nameB) result = -1;
+      if (nameA > nameB) result = 1;
+      return result;
+    });
+    nameSortBtn.classList.remove("asc");
+    nameSortBtn.classList.add("desc");
+    nameOrder.classList.remove("fa-caret-up");
+    nameOrder.classList.add("fa-caret-down");
+    render(sortedCards);
+  } else {
+    //descending sort
+    sortedCards.sort((a, b) => {
+      const nameA = a
+        .getElementsByClassName("repo-name")[0]
+        .innerText.toLowerCase();
+      const nameB = b
+        .getElementsByClassName("repo-name")[0]
+        .innerText.toLowerCase();
+      let result = 0;
+      if (nameA > nameB) result = -1;
+      if (nameA < nameB) result = 1;
+      return result;
+    });
+    nameSortBtn.classList.remove("desc");
+    nameSortBtn.classList.add("asc");
+    nameOrder.classList.remove("fa-caret-down");
+    nameOrder.classList.add("fa-caret-up");
+    render(sortedCards);
+  }
+};
+
+nameSortBtn.addEventListener("click", sortByName);
