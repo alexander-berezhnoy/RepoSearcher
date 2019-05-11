@@ -184,7 +184,6 @@ const filterByStars = () => {
 starFilter.addEventListener("change", filterByStars, false);
 
 /* Repo name sort */
-const repoNames = document.getElementsByClassName("repo-name");
 const nameOrder = document.getElementById("name-order");
 const nameSortBtn = document.getElementById("name-sort");
 
@@ -245,3 +244,47 @@ const sortByName = () => {
 };
 
 nameSortBtn.addEventListener("click", sortByName);
+
+/* Star count sort */
+const starsOrder = document.getElementById("star-order");
+const starsSortBtn = document.getElementById("star-sort");
+
+const sortByStars = () => {
+  let sortedCards = [];
+  for (let i = 0; i < cards.length; i++) {
+    sortedCards.push(cards[i]);
+  }
+  if (starsSortBtn.className.includes("asc")) {
+    //ascending sort
+    sortedCards.sort((a, b) => {
+      const countA = +a.getElementsByClassName("star-count")[0].innerText;
+      const countB = +b.getElementsByClassName("star-count")[0].innerText;
+      let result = 0;
+      if (countA < countB) result = -1;
+      if (countA > countB) result = 1;
+      return result;
+    });
+    starsSortBtn.classList.remove("asc");
+    starsSortBtn.classList.add("desc");
+    starsOrder.classList.remove("fa-caret-up");
+    starsOrder.classList.add("fa-caret-down");
+    render(sortedCards);
+  } else {
+    //descending sort
+    sortedCards.sort((a, b) => {
+      const countA = +a.getElementsByClassName("star-count")[0].innerText;
+      const countB = +b.getElementsByClassName("star-count")[0].innerText;
+      let result = 0;
+      if (countA > countB) result = -1;
+      if (countA < countB) result = 1;
+      return result;
+    });
+    starsSortBtn.classList.remove("desc");
+    starsSortBtn.classList.add("asc");
+    starsOrder.classList.remove("fa-caret-down");
+    starsOrder.classList.add("fa-caret-up");
+    render(sortedCards);
+  }
+};
+
+starsSortBtn.addEventListener("click", sortByStars);
