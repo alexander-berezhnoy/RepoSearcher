@@ -1,5 +1,10 @@
+let btn = document.querySelector(".btn-search");
+let input = document.querySelector('input[type="text"]');
+
 const getRepos = () => {
-  fetch("https://api.github.com/users/gothinkster/repos", {
+  clearRepos();
+  const ownerUrl = `https://api.github.com/users/${input.value}/repos`;
+  fetch(ownerUrl, {
     method: "GET",
     headers: { "content-type": "application/json" }
   })
@@ -27,6 +32,8 @@ const getRepos = () => {
     });
 };
 
+btn.addEventListener("click", getRepos);
+
 const drawCards = repos => {
   let wrapper = document.createElement("div");
   wrapper.className = "wrapper";
@@ -47,8 +54,6 @@ const drawCards = repos => {
     wrapper.appendChild(card);
   });
 };
-
-getRepos();
 
 const createRepoName = name => {
   let repo_name = document.createElement("h4");
@@ -113,4 +118,12 @@ const createRepoUpdated = updated => {
 
 const addLeadingZero = num => {
   return num < 10 ? `0${num}` : `${num}`;
+};
+
+//remove wrapper element
+const clearRepos = () => {
+  const oldWrapper = document.querySelector(".wrapper");
+  if (oldWrapper) {
+    oldWrapper.parentNode.removeChild(oldWrapper);
+  }
 };

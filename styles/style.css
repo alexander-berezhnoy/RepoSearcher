@@ -26,6 +26,40 @@ body {
 .fa-github {
   margin: 10px;
 }
+/* Search style */
+div.owner-search input[type="text"] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+div.owner-search {
+  margin: 10px auto;
+  width: 50%;
+}
+div.owner-search button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+div.owner-search button:hover {
+  background: #0b7dda;
+}
+
+div.owner-search ::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 
 /* Card Style */
 .card {
@@ -68,7 +102,7 @@ body {
 }
 /* Card Grid Style */
 .wrapper {
-  margin: 0 auto;
+  margin: 20px auto;
   width: 80%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
