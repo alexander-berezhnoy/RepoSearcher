@@ -91,7 +91,7 @@ const createRepoLanguage = lang => {
 const createRepoStarCount = stars => {
   let starsCount = document.createElement("div");
   starsCount.className = "info-item stars";
-  starsCount.innerHTML = `<i class="fas fa-star"></i>${stars}`;
+  starsCount.innerHTML = `<i class="fas fa-star"></i><span class="star-count">${stars}</span>`;
   return starsCount;
 };
 
@@ -168,10 +168,17 @@ const resetHideClass = () => {
   }
 };
 /* Star count filter */
-// const starFilter = document.getElementById("star-filter");
-// starFilter.addEventListener("change", filterByStars);
+const starFilter = document.getElementById("star-filter");
+const stars = document.getElementsByClassName("star-count");
 
-// const filterByStars = () => {
-//   const minStars = starFilter.value;
+const filterByStars = () => {
+  resetHideClass();
+  const minStars = +starFilter.value;
+  for (let i = 0; i < cards.length; i++) {
+    if (minStars > +stars[i].innerText) {
+      cards[i].classList.add("hide");
+    }
+  }
+};
 
-// }
+starFilter.addEventListener("change", filterByStars, false);

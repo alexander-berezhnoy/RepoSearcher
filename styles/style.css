@@ -137,3 +137,7 @@ div.owner-search button:hover {
 .hide {
   display: none;
 }
+
+#star-filter{
+  width: 80px;
+}
