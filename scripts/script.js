@@ -70,7 +70,7 @@ const createRepoInfo = repo => {
   repoInfo.appendChild(createRepoStarCount(repo.stars));
 
   repoInfo.appendChild(createRepoIsFork(repo.fork));
-  // repoInfo.appendChild(createRepoUpdated(repo.updated));
+  repoInfo.appendChild(createRepoUpdated(repo.updated));
   return repoInfo;
 };
 
@@ -90,11 +90,27 @@ const createRepoStarCount = stars => {
 
 const createRepoIsFork = isFork => {
   let fork = document.createElement("div");
-  fork.className = "info-item stars";
+  fork.className = "info-item fork";
   fork.innerHTML = isFork
     ? '<i class="fas fa-code-branch"></i><i class="fas fa-check">'
     : '<i class="fas fa-code-branch"></i> <i class="fas fa-times">';
   return fork;
+};
+
+const createRepoUpdated = updated => {
+  let updatedAt = document.createElement("div");
+  updatedAt.className = "info-item updated";
+  const date = new Date(updated);
+  const hours = addLeadingZero(date.getHours());
+  const minutes = addLeadingZero(date.getMinutes());
+  const days = addLeadingZero(date.getDate());
+  const month = addLeadingZero(date.getMonth() + 1);
+  updatedAt.innerText = `${hours}:${minutes} ${days}.${month}.${date.getFullYear()}`;
+  return updatedAt;
+};
+
+const addLeadingZero = num => {
+  return num < 10 ? `0${num}` : `${num}`;
 };
 /*
 <div class="card">
