@@ -32,12 +32,13 @@ const drawCards = repos => {
   repos.forEach(repo => {
     let card = document.createElement("div");
     card.className = "card";
-    wrapper.appendChild(card);
-    // let name = createRepoName(repo.name);
 
+    let name = createRepoName(repo.name);
+    card.appendChild(name);
     // let description = document.createElement("p");
     // description.className = "repo-description";
     // description.innerText =
+    wrapper.appendChild(card);
   });
 };
 
