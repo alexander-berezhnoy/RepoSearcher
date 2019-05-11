@@ -39,6 +39,9 @@ const drawCards = repos => {
     let description = createRepoDescription(repo.description);
     card.appendChild(description);
 
+    let infoRow = createRepoInfo(repo);
+    card.appendChild(infoRow);
+
     wrapper.appendChild(card);
   });
 };
@@ -57,6 +60,24 @@ const createRepoDescription = descr => {
   description.className = "repo-description";
   description.innerText = descr;
   return description;
+};
+
+const createRepoInfo = repo => {
+  let repoInfo = document.createElement("div");
+  repoInfo.className = "repo-info";
+
+  repoInfo.appendChild(createRepoLanguage(repo.language));
+  return repoInfo;
+  // repoInfo.appendChild(createRepoStarCount(repo.stars));
+  // repoInfo.appendChild(createRepoIsFork(repo.fork));
+  // repoInfo.appendChild(createRepoUpdated(repo.updated));
+};
+
+const createRepoLanguage = lang => {
+  let language = document.createElement("div");
+  language.className = "info-item language";
+  language.innerText = lang;
+  return language;
 };
 /*
 <div class="card">
