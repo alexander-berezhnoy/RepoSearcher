@@ -2,12 +2,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto Slab", serif;
+}
+
+body {
+  background-color: #eaeaea;
 }
 
 .navbar {
   background-color: #24292e;
-  color: hsla(0, 0%, 100%, 0.7);
-  font-size: 14px;
+  color: #eaeaea;
+  font-size: 1.7rem;
   line-height: 1.5;
   padding: 16px;
   z-index: 32;
@@ -15,10 +20,49 @@
 .navbar-brand {
   background-color: #24292e;
   color: #eaeaea;
-  font-size: 2rem;
   text-decoration: none;
 }
 
 .fa-github {
   margin: 10px;
+}
+
+/* Card Style */
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 300px;
+  margin: 0 11px 16px 0;
+  padding: 16px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.repo-name {
+  font-weight: 700;
+  color: #0366d6;
+  cursor: pointer;
+}
+
+.repo-description {
+  font-size: 12px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  color: #586069;
+}
+
+.repo-info {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  font-size: 12px;
+  margin-bottom: 0;
+  margin-top: 0;
+  color: #586069;
 }
