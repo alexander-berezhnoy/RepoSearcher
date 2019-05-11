@@ -35,9 +35,10 @@ const drawCards = repos => {
 
     let name = createRepoName(repo.name);
     card.appendChild(name);
-    // let description = document.createElement("p");
-    // description.className = "repo-description";
-    // description.innerText =
+
+    let description = createRepoDescription(repo.description);
+    card.appendChild(description);
+
     wrapper.appendChild(card);
   });
 };
@@ -51,12 +52,12 @@ const createRepoName = name => {
   return repo_name;
 };
 
-// const createRepoDescription = (descr) =>{
-//   let description = document.createElement("p");
-//   description.className = "repo-description";
-//   description.innerText = descr;
-//   return description;
-// }
+const createRepoDescription = descr => {
+  let description = document.createElement("p");
+  description.className = "repo-description";
+  description.innerText = descr;
+  return description;
+};
 /*
 <div class="card">
       <h4 class="repo-name">realworld</h4>
