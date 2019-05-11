@@ -1,5 +1,3 @@
-let repos = [];
-
 const getRepos = () => {
   fetch("https://api.github.com/users/alexander-berezhnoy/repos", {
     method: "GET",
@@ -21,8 +19,58 @@ const getRepos = () => {
         };
       });
     })
-    .then(console.log)
+    .then(repos => {
+      drawCards(repos);
+    })
     .catch(err => {
       console.log(err);
     });
 };
+
+const drawCards = repos => {
+  let wrapper = document.querySelector(".wrapper");
+  repos.forEach(repo => {
+    let card = document.createElement("div");
+    card.className = "card";
+    wrapper.appendChild(card);
+    // let name = createRepoName(repo.name);
+
+    // let description = document.createElement("p");
+    // description.className = "repo-description";
+    // description.innerText =
+  });
+};
+
+getRepos();
+
+const createRepoName = name => {
+  let repo_name = document.createElement("h4");
+  repo_name.className = "repo-name";
+  repo_name.innerText = name;
+  return repo_name;
+};
+
+// const createRepoDescription = (descr) =>{
+//   let description = document.createElement("p");
+//   description.className = "repo-description";
+//   description.innerText = descr;
+//   return description;
+// }
+/*
+<div class="card">
+      <h4 class="repo-name">realworld</h4>
+      <p class="repo-description">
+        "The mother of all demo apps" — Exemplary fullstack Medium.com clone
+        powered by React, Angular, Node, Django, and many more
+      </p>
+      <div class="repo-info">
+        <div class="info-item language">JavaScript</div>
+        <div class="info-item stars"><i class="fas fa-star"></i>25.6k</div>
+        <div class="info-item fork">
+          <i class="fas fa-code-branch"></i> <i class="fas fa-check"></i>
+        </div>
+        <div class="info-item updated">11.05.2019</div>
+      </div>
+    </div>
+
+*/
