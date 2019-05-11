@@ -1,5 +1,5 @@
 const getRepos = () => {
-  fetch("https://api.github.com/users/alexander-berezhnoy/repos", {
+  fetch("https://api.github.com/users/gothinkster/repos", {
     method: "GET",
     headers: { "content-type": "application/json" }
   })
@@ -67,8 +67,8 @@ const createRepoInfo = repo => {
   repoInfo.className = "repo-info";
 
   repoInfo.appendChild(createRepoLanguage(repo.language));
+  repoInfo.appendChild(createRepoStarCount(repo.stars));
   return repoInfo;
-  // repoInfo.appendChild(createRepoStarCount(repo.stars));
   // repoInfo.appendChild(createRepoIsFork(repo.fork));
   // repoInfo.appendChild(createRepoUpdated(repo.updated));
 };
@@ -78,6 +78,13 @@ const createRepoLanguage = lang => {
   language.className = "info-item language";
   language.innerText = lang;
   return language;
+};
+
+const createRepoStarCount = stars => {
+  let starsCount = document.createElement("div");
+  starsCount.className = "info-item stars";
+  starsCount.innerHTML = `<i class="fas fa-star"></i>${stars}`;
+  return starsCount;
 };
 /*
 <div class="card">
