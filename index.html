@@ -36,5 +36,23 @@
         <i class="fas fa-search"></i>
       </button>
     </div>
+    <div class="workbar">
+      <div class="type-filter">
+        <span>Type: </span>
+        <select id="type-select">
+          <option value="all" selected>All</option>
+          <option value="forks">Forks</option>
+          <option value="sources">Sources</option>
+        </select>
+      </div>
+
+      <div>
+        <span>Stars >= </span>
+        <input id="star-filter" type="number" min="0" step="1" value="0" />
+      </div>
+
+      <button class="btn">Name Sort</button>
+      <button class="btn">Star Sort</button>
+    </div>
   </body>
 </html>

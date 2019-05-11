@@ -40,7 +40,7 @@ const drawCards = repos => {
   document.body.insertBefore(wrapper, document.body.nextSibling);
   repos.forEach(repo => {
     let card = document.createElement("div");
-    card.className = "card";
+    card.className = repo.fork ? "card fork" : "card source";
 
     let name = createRepoName(repo.name);
     card.appendChild(name);
@@ -127,3 +127,51 @@ const clearRepos = () => {
     oldWrapper.parentNode.removeChild(oldWrapper);
   }
 };
+
+const typeFilter = document.getElementById("type-select");
+const cards = document.getElementsByClassName("card");
+
+typeFilter.addEventListener(
+  "change",
+  function() {
+    const choosedType = this.value;
+    switch (choosedType) {
+      case "forks": {
+        filterCardsByType("fork");
+        break;
+      }
+      case "sources": {
+        filterCardsByType("source");
+        break;
+      }
+      case "all":
+      default: {
+        resetHideClass();
+      }
+    }
+  },
+  false
+);
+
+const filterCardsByType = filterClass => {
+  resetHideClass();
+  for (let i = 0; i < cards.length; i++) {
+    if (cards[i].className.indexOf(filterClass) == -1) {
+      cards[i].classList.add("hide");
+    }
+  }
+};
+
+const resetHideClass = () => {
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].classList.remove("hide");
+  }
+};
+/* Star count filter */
+// const starFilter = document.getElementById("star-filter");
+// starFilter.addEventListener("change", filterByStars);
+
+// const filterByStars = () => {
+//   const minStars = starFilter.value;
+
+// }
