@@ -68,9 +68,10 @@ const createRepoInfo = repo => {
 
   repoInfo.appendChild(createRepoLanguage(repo.language));
   repoInfo.appendChild(createRepoStarCount(repo.stars));
-  return repoInfo;
-  // repoInfo.appendChild(createRepoIsFork(repo.fork));
+
+  repoInfo.appendChild(createRepoIsFork(repo.fork));
   // repoInfo.appendChild(createRepoUpdated(repo.updated));
+  return repoInfo;
 };
 
 const createRepoLanguage = lang => {
@@ -85,6 +86,15 @@ const createRepoStarCount = stars => {
   starsCount.className = "info-item stars";
   starsCount.innerHTML = `<i class="fas fa-star"></i>${stars}`;
   return starsCount;
+};
+
+const createRepoIsFork = isFork => {
+  let fork = document.createElement("div");
+  fork.className = "info-item stars";
+  fork.innerHTML = isFork
+    ? '<i class="fas fa-code-branch"></i><i class="fas fa-check">'
+    : '<i class="fas fa-code-branch"></i> <i class="fas fa-times">';
+  return fork;
 };
 /*
 <div class="card">
